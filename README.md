@@ -37,7 +37,7 @@ end
 
 for key, value in pairs(freq) do
     if key:byte() < 32 then
-        print(('\'\\%3i\'\t: %i'):format(key:byte(), value));
+        print(('\'\\%i\'\t: %i'):format(key:byte(), value));
     else
         print(('\'%s\'\t: %i'):format(key, value));
     end

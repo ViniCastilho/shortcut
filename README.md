@@ -8,7 +8,7 @@
 ```lua
 print('Insira um nome de arquivo:');
 local name = io.read();
-name = name..'.txt'
+name = name..'.txt';
 
 local f = io.open(name, 'w');
 assert(f ~= nil, 'Falha ao abrir');

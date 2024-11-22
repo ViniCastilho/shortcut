@@ -1,3 +1,6 @@
+# Amostra TCC 2024
+[Apresentação](https://docs.google.com/presentation/d/1fd-xqXsNJgiyUJzoBC_wH_K_UTlIA_tIHHOtHEegOmo/edit?usp=sharing)
+
 # SECOMPP 2024 - Lua 5.4
 [Apresentação](https://docs.google.com/presentation/d/10d6hB7PZQrErfJ_yd9yudUiya_61jO63DfGljCeckw0/edit?usp=sharing)
 

@@ -1,3 +1,8 @@
+# SECOMPP 2025
+[Pasta do projeto](https://drive.google.com/file/d/1dJYh1sfdClNqbaZERplWl1F3GcWO0Uhp/view?usp=sharing)
+
+[Apresentação Lua 5.4](https://docs.google.com/presentation/d/10d6hB7PZQrErfJ_yd9yudUiya_61jO63DfGljCeckw0/edit?usp=sharing)
+
 # Amostra TCC 2024
 [Apresentação](https://docs.google.com/presentation/d/1fd-xqXsNJgiyUJzoBC_wH_K_UTlIA_tIHHOtHEegOmo/edit?usp=sharing)
 

@@ -1,3 +1,10 @@
+# SECOMPP 2026
+[Apresentação](https://docs.google.com/presentation/d/1_ty3S2MjSL1y3AWqb_kZnwaK51FecTfo2a3E4xoJanE/edit?usp=sharing)
+
+[Arquivos binários](https://luabinaries.sourceforge.net/download.html)
+
+[Extensão VSCode](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
+
 # SECOMPP 2025
 [Pasta do projeto](https://drive.google.com/file/d/1dJYh1sfdClNqbaZERplWl1F3GcWO0Uhp/view?usp=sharing)
 

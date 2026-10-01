@@ -6,6 +6,50 @@
 
 [Extensão VSCode](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
 
+```c
+#include <stdio.h>
+#include <string.h>
+#include "include/lua.h"
+#include "include/lauxlib.h"
+#include "include/lualib.h"
+
+int main() {
+    lua_State *L = luaL_newstate();
+    luaL_openlibs(L);
+    char linha[256];
+    int msg;
+    printf("Interpretador de Lua caseiro 1.0\n");
+    while(1) {
+        printf("> ");
+        fgets(linha, 255, stdin);
+        msg = luaL_dostring(L, linha);
+        switch(msg) {
+            case LUA_OK: //deu certo
+                break;
+            case LUA_ERRRUN:
+                printf("Erro de execução\n");
+                break;
+            case LUA_ERRSYNTAX:
+                printf("Erro de sintaxe\n");
+                break;
+            case LUA_ERRFILE:
+                printf("O arquivo não foi encontrado!\n");
+                return 1;
+            case LUA_ERRMEM:
+                printf("Erro: memória insuficiente!\n");
+                return 2;
+            default:
+                printf("Erro desconhecido.\n");
+                break;
+        }
+        if(!strcmp(linha, "exit\n"))
+            break;
+    }
+    lua_close(L);
+    return 0;
+}
+```
+
 # SECOMPP 2025
 [Pasta do projeto](https://drive.google.com/file/d/1dJYh1sfdClNqbaZERplWl1F3GcWO0Uhp/view?usp=sharing)
 

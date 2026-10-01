@@ -8,6 +8,170 @@
 
 ```c
 #include <stdio.h>
+#include "include/lua.h"
+#include "include/lauxlib.h"
+#include "include/lualib.h"
+
+int soma_dois(lua_State *L) {
+    double a = lua_tonumber(L, -1);
+    double b = lua_tonumber(L, -2);
+    double somado = a+b;
+    lua_pushnumber(L, somado);
+    return 1;
+}
+
+void mostrar_pilha(lua_State *L) {
+    int tam_pilha = lua_gettop(L);
+    printf("tamanho da pilha: %d\n", tam_pilha);
+    printf("Pilha: [\n");
+    for(int i = -1; i >= -tam_pilha; i--) {
+        int tipo = lua_type(L, i);
+        switch (tipo) {
+            case LUA_TNUMBER: {
+                printf("\t%8s: %lf\n", "number", lua_tonumber(L,i));
+                break;
+            }
+            case LUA_TBOOLEAN: {
+                const char *truth_value = lua_toboolean(L,i) ? "true" : "false";
+                printf("\t%8s: %s\n", "boolean", truth_value);
+                break;
+            }
+            case LUA_TSTRING: {
+                printf("\t%8s: \"%s\"\n", "string", lua_tostring(L,i));
+                break;
+            }
+            case LUA_TTABLE: {
+                printf("\t%8s.\n", "table");
+                break;
+            }
+            case LUA_TNIL: {
+                printf("\t%8s.\n", "nil");
+                break;
+            }
+            case LUA_TFUNCTION: {
+                printf("\t%8s.\n", "function");
+                break;
+            }
+            case LUA_TTHREAD: {
+                printf("\t%8s.\n", "thread");
+                break;
+            }
+            default: {
+                printf("\tDEFAULTCASE.\n");
+                break;
+            }
+        }
+    }
+    printf("]\n");
+}
+
+void itens_na_pilha(lua_State *L) {
+
+    printf("temos %d itens na pilha.\n", lua_gettop(L));
+}
+
+int erro(lua_State *L) {
+    printf("Nao eh funcao.\n");
+    return 1;
+}
+
+int main() {
+
+    lua_State *L = luaL_newstate();
+    luaL_openlibs(L);
+    if(!lua_checkstack(L, 100)) {
+        printf("moiô\n");
+        return 1;
+    }
+    // lua_pushnil(L);
+    // lua_pushboolean(L, 0); //false
+    // itens_na_pilha(L);
+    // lua_pushnumber(L, 404);
+    // lua_pushinteger(L, 4041);
+    // itens_na_pilha(L);
+    // int aaaa = 30;
+    // lua_pushfstring(L, "%d\n", aaaa);
+    // lua_setglobal(L, "oq_sobra");
+    // mostrar_pilha(L);
+    // luaL_dofile(L, "teste.lua");
+    // mostrar_pilha(L);
+    // lua_getglobal(L, "o");
+    // int o = lua_tonumber(L, -1);
+    // printf("o: %d\n", o);
+    // lua_getglobal(L, "carro");
+    // const char *carro = lua_tostring(L, -1);
+    // int len_carro = lua_strlen(L, -1);
+    // printf("carro: %s\ntamanho do carro: %d\n", carro, len_carro);
+    // int carroint = lua_tonumber(L, -1);
+    // printf("carro int: %d\n", carroint);
+    // lua_getglobal(L, "idade");
+    // itens_na_pilha(L);
+    // int idade = lua_tonumber(L, -1);
+    // printf("idade: %d\n", idade);
+    // int tipo = lua_type(L, -3);
+    // switch(tipo) {
+    //     case LUA_TBOOLEAN:
+    //         printf("booleano\n");
+    //         break;
+    //     case LUA_TNUMBER:
+    //         printf("number\n");
+    //         break;
+    //     case LUA_TFUNCTION:
+    //         printf("funcao\n");
+    //         break;
+    //     case LUA_TTABLE:
+    //         printf("table\n");
+    //         break;
+    //     case LUA_TSTRING:
+    //         printf("string\n");
+    //         break;
+    //     case LUA_TNIL:
+    //         printf("nil\n");
+    //         break;
+    //     default:
+    //         printf("ué\n");
+    //         break;
+    // }
+    // mostrar_pilha(L);
+    // lua_pop(L, 4);
+    // itens_na_pilha(L);
+    // lua_remove(L, 1);
+    // itens_na_pilha(L);
+    // mostrar_pilha(L);
+    // lua_insert(L, 1);
+    // mostrar_pilha(L);
+    // lua_insert(L, 2);
+    // mostrar_pilha(L);
+    // lua_replace(L, 1);
+    // mostrar_pilha(L);
+    // lua_pushvalue(L, -1);
+    // lua_pushvalue(L, 1);
+    // mostrar_pilha(L);
+    // luaL_dostring(L, "printf(\"sintaxe incorreta\");");
+    // mostrar_pilha(L);
+    luaL_dofile(L, "teste.lua");
+    lua_getglobal(L, "os");
+    lua_pcall(L, 0, 1, 0); // chama os.date()
+    printf("%s\n", lua_tostring(L, -1));
+    lua_getglobal(L, "multiplica_dois");
+    lua_pushnumber(L, 2);
+    lua_pushstring(L, "4");
+    mostrar_pilha(L);
+    lua_pcall(L, 2, 2, 0);
+    mostrar_pilha(L);
+    printf("%d\n%s\n", lua_tointeger(L, -2), lua_tostring(L, -1));
+    lua_pushcfunction(L, soma_dois);
+    lua_setglobal(L, "soma_dois");
+    lua_pop(L, -1);
+    luaL_dofile(L, "teste.lua");
+    mostrar_pilha(L);
+    lua_close(L);
+    return 0;
+}
+```
+
+```c
+#include <stdio.h>
 #include <string.h>
 #include "include/lua.h"
 #include "include/lauxlib.h"

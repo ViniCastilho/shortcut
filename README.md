@@ -1,5 +1,6 @@
 # SECOMPP 2026
-[Apresentação](https://docs.google.com/presentation/d/1_ty3S2MjSL1y3AWqb_kZnwaK51FecTfo2a3E4xoJanE/edit?usp=sharing)
+[Apresentação Dia 1](https://docs.google.com/presentation/d/1_ty3S2MjSL1y3AWqb_kZnwaK51FecTfo2a3E4xoJanE/edit?usp=sharing)
+[Apresentação Dia 2](https://docs.google.com/presentation/d/1KMhBTjarxXWs_A2CZBXyepU1o5tcl-VafBHIBR5WGsw/edit?usp=sharing)
 
 [Arquivos binários](https://luabinaries.sourceforge.net/download.html)
 
